@@ -1,0 +1,22 @@
+# pylint configuration for the MP1 simulation scripts.
+#
+# Only two defaults are relaxed, and both are relaxed for a stated reason
+# rather than to make a warning go away.
+
+[MAIN]
+# NumPy-style docstrings plus the hand derivation preserved verbatim in
+# ORIGINAL_NOTES push get_good_numbers.py past the 1000-line default. The
+# non-blank, non-docstring body is a small fraction of that.
+max-module-lines = 1500
+
+[DESIGN]
+# The circuit has six components in the timing loop, so any function that takes
+# a whole design takes six arguments. Collapsing them into a dict or a dataclass
+# just to satisfy a linter would make period_halves() read less like the
+# equation it implements.
+max-args = 6
+max-positional-arguments = 6
+
+[FORMAT]
+# Black's default, which is what these files are formatted with.
+max-line-length = 88
